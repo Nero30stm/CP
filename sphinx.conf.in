@@ -1,0 +1,76 @@
+#
+# Minimal Sphinx configuration sample (clean, simple, functional)
+#
+
+source src1
+{
+  type			= mysql
+
+  sql_host		= 127.0.0.1
+  sql_user		= root
+  sql_pass		= iancha121097
+  sql_db			= fias
+  sql_port		= 3306
+
+
+# indexer query
+        # document_id MUST be the very first field
+        # document_id MUST be positive (non-zero, non-negative)
+        # document_id MUST fit into 32 bits
+        # document_id MUST be unique
+        sql_query_pre = SET NAMES utf8
+sql_query_pre = SET CHARACTER_SET_RESULTS=cp1251
+sql_query_pre = SET CHARACTER SET cp1251
+
+
+
+  sql_query = SELECT * FROM d_fias_addrobj;
+   
+
+        sql_query_info = SELECT * FROM d_fias_addrobj where aoid=$id;
+
+}
+
+
+index test1
+{
+  source			= src1
+  path			= C:/sphinx-3.2.1/data/test1
+  charset_type = utf-8
+}
+
+
+# index testrt
+# {
+# 	type			= rt
+# 	rt_mem_limit		= 128M
+# 
+# 	path			= /var/data/testrt
+# 
+# 	rt_field		= title
+# 	rt_field		= content
+# 	rt_attr_uint		= gid
+# }
+
+
+indexer
+{
+  mem_limit		= 128M
+}
+
+
+searchd
+{
+  # какой порт и какой протокол "слушает" служба
+    listen            = 9312
+
+    # файл с логами
+    log            = C:\sphinx-3.2.1/log/searchd.log
+
+    # файл с логами поисковых запросов
+    query_log        = C:\sphinx-3.2.1/log/query.log
+
+    # PID file, searchd process ID file name
+    # mandatory
+    pid_file        = C:\sphinx-3.2.1/log/searchd.pid
+}
