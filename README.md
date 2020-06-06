@@ -1,3 +1,18 @@
 # CP
 В файле Sphinx.conf.in находится конфиги с небольшими комментариями.
-после того как файл конфига добавлен необходимо запустить C:\Sphinx\bin\searchd --install --config C:\Sphinx\sphinx.conf.in --servicename SphinxSearch для установки службы
+после того как файл конфига добавлен необходимо запустить 
+~~~
+C:\Sphinx\bin\searchd --install --config C:\Sphinx\sphinx.conf.in --servicename SphinxSearch 
+~~~
+для установки службы
+
+
+# Notes
+Считывание с файла, париснг и запись в файл. Формат многомерный массиы, 0 = id, 1 = данные. После парсинга данные = массив
+Кодировка записи utf-8. Перед отправкой желательно проверить кодировку!
+Внимание при считывании первая строка с метоинформацией не пропускается!
+~~~
+data = input('SourceData/bad.csv')
+data = parse(data)
+output('result_chip_and_dale.csv', data)
+~~~
