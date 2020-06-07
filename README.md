@@ -9,14 +9,19 @@ C:\Sphinx\bin\searchd --install --config C:\Sphinx\sphinx.conf.in --servicename 
 ~~~
 для установки службы.
 Далее для индексации необходимо ввести команду
+~~~
 C:\Sphinx\bin\indexer --all --config C:\Sphinx\sphinx.conf.in
+~~~
 
 Для корректной работы алгоритма сравнения так же понадобиться установить библиотеку fuzzy
+~~~
 pip install fuzzywuzzy
+~~~
 
 Далее устанавливаем таким же образом python-Levenshtein для ускорения сопоставления строк в 3-10 раз.
-
+~~~
 pip install python-Levenshtein
+~~~
 
 # Notes
 Считывание с файла, париснг и запись в файл. Формат многомерный массиы, 0 = id, 1 = данные. После парсинга данные = массив
